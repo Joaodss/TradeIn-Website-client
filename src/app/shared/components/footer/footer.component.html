@@ -1,11 +1,12 @@
-<footer class="footer">
+<footer class="footer"
+  [ngStyle]="{'background-color': hasHomeFormat() ?'#fff':'#777'}">
   <div class="container">
-      <div class="row">
-          <div class="credits ml-auto">
-              <span class="copyright">
-                  © 2022, made by Joao Afonso Silva
-              </span>
-          </div>
+    <div class="row">
+      <div class="credits ml-auto">
+        <span class="copyright" [ngStyle]="{'color': hasHomeFormat() ?'#777':'#fff'}">
+          © 2022, made by Joao Afonso Silva
+        </span>
       </div>
+    </div>
   </div>
 </footer>

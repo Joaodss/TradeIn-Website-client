@@ -1,0 +1,23 @@
+.btn-login {
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+p,
+a{
+  font-size: 1em;
+}
+
+.with-line {
+  display: block;
+}
+
+.with-line:before,
+.with-line:after {
+  content: "";
+  display: inline-block;
+  border-top: 1px solid #000;
+  width: 8em;
+  vertical-align: middle;
+  margin: 0 0.5em;
+}
