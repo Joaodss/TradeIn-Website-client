@@ -7,6 +7,7 @@ import { ProductElementComponent } from './components/product-element/product-el
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,9 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     HomePageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TradeInRequestModule { }

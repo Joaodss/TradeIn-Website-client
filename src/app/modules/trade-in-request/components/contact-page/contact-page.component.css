@@ -8,16 +8,8 @@ a{
   font-size: 1em;
 }
 
-.with-line {
-  display: block;
+.blockquote,
+h6{
+  font-size: 1.1em;
 }
 
-.with-line:before,
-.with-line:after {
-  content: "";
-  display: inline-block;
-  border-top: 1px solid #000;
-  width: 8em;
-  vertical-align: middle;
-  margin: 0 0.5em;
-}
