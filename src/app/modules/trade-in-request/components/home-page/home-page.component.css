@@ -1,0 +1,18 @@
+h1 {
+  font-size: 4em;
+}
+h3 {
+  font-size: 2em;
+}
+
+.btn-main {
+  margin-top: 10em;
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-main:hover {
+  border-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.8);
+}

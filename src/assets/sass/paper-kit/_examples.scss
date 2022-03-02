@@ -23,7 +23,7 @@
     -ms-flex-pack: center;
 
     .filter::after{
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.6);
         content: "";
         display: block;
         height: 100%;
@@ -56,6 +56,12 @@
     position: relative;
 
 }
+
+.page-header .motto-button{
+  z-index: 3;
+  position: relative;
+}
+
 .landing-section{
     padding: 100px 0;
     z-index: 1;
@@ -242,21 +248,6 @@
     img{
         width: 100%;
     }
-}
-.page-header{
-    .content-center{
-        //margin-top: 85px;
-    }
-}
-.moving-clouds{
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-    width: 250.625em;
-    height: 43.75em;
-    -webkit-animation: cloudLoop 80s linear infinite;
-    animation: cloudLoop 80s linear infinite;
 }
 
 @keyframes cloudLoop{   0%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
