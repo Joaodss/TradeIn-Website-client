@@ -1,7 +1,9 @@
-import { ContactData } from './../../models/contact.model';
-import { TradeRequestService } from './../../services/trade-request-service.service';
+import { Contact } from './../../models/contact.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { TradeRequestService } from './../../services/trade-request-service.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -9,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
+  contact: Contact = this.tradeRequestService.fetchContact();
   contactForm: FormGroup;
   firstName: FormControl;
   lastName: FormControl;
@@ -16,12 +19,13 @@ export class ContactFormComponent implements OnInit {
   phoneNumber: FormControl;
 
   constructor(
-    public tradeRequestService: TradeRequestService
+    public tradeRequestService: TradeRequestService,
+    public router: Router
   ) {
-    this.firstName = new FormControl('', [Validators.required]);
-    this.lastName = new FormControl('', [Validators.required]);
-    this.email = new FormControl('', [Validators.required, Validators.email]);
-    this.phoneNumber = new FormControl('', [Validators.required, Validators.pattern('^([\+(]{1,2})?([0-9()-])*$')]);
+    this.firstName = new FormControl(this.contact.fistName, [Validators.required]);
+    this.lastName = new FormControl(this.contact.lastName, [Validators.required]);
+    this.email = new FormControl(this.contact.email, [Validators.required, Validators.email]);
+    this.phoneNumber = new FormControl(this.contact.phoneNumber, [Validators.required, Validators.pattern('^([\+(]{1,2})?([0-9()-])*$')]);
     this.contactForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName,
@@ -49,15 +53,17 @@ export class ContactFormComponent implements OnInit {
   }
 
   registerContact(): void {
-    this.tradeRequestService.setContact(
-      new ContactData({
-        fistName: this.firstName.value,
-        lastName: this.lastName.value,
-        email: this.email.value,
-        phoneNumber: this.phoneNumber.value
-      })
-    );
+    this.contact = {
+      fistName: this.firstName.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+      phoneNumber: this.phoneNumber.value
+    };
+
+    this.tradeRequestService.saveContact(this.contact);
     console.log('Contact form submitted');
+    console.log(this.contact);
+    this.router.navigate(['/trade-in-request/products']);
   }
 
 }

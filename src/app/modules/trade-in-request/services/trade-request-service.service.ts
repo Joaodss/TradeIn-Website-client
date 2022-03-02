@@ -1,39 +1,32 @@
 import { Injectable } from '@angular/core';
-import { ContactData } from '../models/contact.model';
+
+import { Contact } from './../models/contact.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TradeRequestService {
-  contact: ContactData = new ContactData({
-    fistName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: ''
-  });
 
-
-
-  constructor() {
-    this.resetStoredValues();
-  }
+  constructor() { }
 
 
   resetStoredValues(): void {
-    this.contact = new ContactData({
-      fistName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: ''
-    });
   }
 
-  setContact(contact: ContactData): void {
-    this.contact = contact;
+  saveContact(contact: Contact): void {
+    sessionStorage.setItem('contact', JSON.stringify(contact));
   }
 
-  getContact(): ContactData {
-    return this.contact;
+  fetchContact(): Contact {
+    let savedContact = sessionStorage.getItem('contact');
+    return savedContact != null ?
+      JSON.parse(savedContact) :
+      {
+        fistName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: ''
+      };
   }
 
 
