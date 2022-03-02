@@ -1,3 +1,5 @@
+import { ContactData } from './../../models/contact.model';
+import { TradeRequestService } from './../../services/trade-request-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -13,7 +15,9 @@ export class ContactFormComponent implements OnInit {
   email: FormControl;
   phoneNumber: FormControl;
 
-  constructor() {
+  constructor(
+    public tradeRequestService: TradeRequestService
+  ) {
     this.firstName = new FormControl('', [Validators.required]);
     this.lastName = new FormControl('', [Validators.required]);
     this.email = new FormControl('', [Validators.required, Validators.email]);
@@ -45,10 +49,15 @@ export class ContactFormComponent implements OnInit {
   }
 
   registerContact(): void {
-
+    this.tradeRequestService.setContact(
+      new ContactData({
+        fistName: this.firstName.value,
+        lastName: this.lastName.value,
+        email: this.email.value,
+        phoneNumber: this.phoneNumber.value
+      })
+    );
     console.log('Contact form submitted');
-    console.log(this.contactForm.value);
-
   }
 
 }
