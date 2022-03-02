@@ -7,9 +7,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent, },
-  { path: '/trade-in-request/contact', component: ContactPageComponent, },
-  { path: '/trade-in-request/products', component: ProductPageComponent, },
+  { path: '', component: HomePageComponent },
+  { path: 'trade-in-request/contact', component: ContactPageComponent },
+  { path: 'trade-in-request/products', component: ProductPageComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -17,7 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-
-
-}
+export class AppRoutingModule { }
