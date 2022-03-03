@@ -1,4 +1,6 @@
+import { TradeRequestService } from './../../services/trade-request-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Product } from '../../models/products.model';
 
@@ -12,9 +14,13 @@ export class ProductPageComponent implements OnInit {
 
   selectedProductId: number = -1;
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public tradeService: TradeRequestService
+  ) { }
 
   ngOnInit(): void {
+    this.products = this.tradeService.fetchProducts();
   }
 
   selectProduct(productAndId: { id: number, product: Product }) {
@@ -24,18 +30,21 @@ export class ProductPageComponent implements OnInit {
 
   deleteProduct(index: number) {
     this.products.splice(index, 1);
+    this.tradeService.saveProducts(this.products);
   }
 
   addProduct(product: Product) {
     this.selectedProductId = -1;
     this.selectedProduct = product;
     this.products.push(product);
+    this.tradeService.saveProducts(this.products);
   }
 
   updateProduct(productAndId: { id: number, product: Product }) {
     this.selectedProductId = -1;
     this.selectedProduct = productAndId.product;
     this.products[productAndId.id] = productAndId.product;
+    this.tradeService.saveProducts(this.products);
   }
 
   passSelectedProduct() {
@@ -69,5 +78,18 @@ export class ProductPageComponent implements OnInit {
     return this.products.length > 0 ? this.products[0].shippingCountryISOCode : ''
   }
 
+  navigateBack() {
+    this.router.navigate(['/trade-in-request/contact']);
+  }
+
+  submitRequest() {
+    this.tradeService.submitRequest()?.subscribe({
+      next: (result: any) => {
+        console.log(result);
+        this.router.navigate(['/trade-in-request/success', result.id]);
+      },
+      error: err => console.log(err)
+    });
+  }
 
 }
