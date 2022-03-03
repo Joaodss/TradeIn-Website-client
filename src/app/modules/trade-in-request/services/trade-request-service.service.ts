@@ -68,8 +68,6 @@ export class TradeRequestService {
     if (contactString !== null && productsString !== null) {
       const contact: Contact = JSON.parse(contactString);
       const products: Product[] = JSON.parse(productsString);
-      console.log(contact);
-      console.log(products);
       const request = this.convertToRequest(contact, products);
 
       return this.exportToDataBase(request);
@@ -79,10 +77,7 @@ export class TradeRequestService {
 
   convertToRequest(contact: Contact, products: Product[]): TradeInRequestDTO {
     let finalProducts: ProductsDTO[] = [];
-    console.log('adsfgadg');
-
     for (const product of products) {
-      console.log('adsfgadg');
       finalProducts.push({
         category: product.category,
         brand: product.brand,

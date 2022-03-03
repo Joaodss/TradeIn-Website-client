@@ -28,7 +28,7 @@
     </div>
     <div class="col-4 col-md-3 d-flex justify-content-center">
       <button class="btn w-75" type="submit" (click)="submitRequest()"
-        [disabled]="products.length<1">
+        [disabled]="products.length<1 || submitDisabled">
         Submit
       </button>
     </div>

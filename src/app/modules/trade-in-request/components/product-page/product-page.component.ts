@@ -9,6 +9,7 @@ import { Product } from '../../models/products.model';
   styleUrls: ['./product-page.component.css']
 })
 export class ProductPageComponent implements OnInit {
+  submitDisabled = false;
   products: Product[] = [];
   selectedProduct!: Product;
 
@@ -83,14 +84,19 @@ export class ProductPageComponent implements OnInit {
   }
 
   submitRequest() {
+    this.submitDisabled = true;
     this.tradeService.submitRequest()?.subscribe({
       next: (result: any) => {
         console.log(result);
         this.tradeService.saveRequest(result);
         this.router.navigate(['/trade-in-request/success']);
         this.tradeService.resetProducts();
+        this.submitDisabled = false;
       },
-      error: err => console.log(err)
+      error: err => {
+        console.log(err)
+        this.submitDisabled = false;
+      }
     });
   }
 
