@@ -6,7 +6,7 @@
 
 ## Required Thecnologies
 
-- node.js
+- node.js 16.14
 
 ## Project Setup
  
