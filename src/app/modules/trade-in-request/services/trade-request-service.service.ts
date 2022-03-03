@@ -24,6 +24,10 @@ export class TradeRequestService {
     sessionStorage.removeItem('products');
   }
 
+  resetProducts(): void {
+    sessionStorage.removeItem('products');
+  }
+
   saveContact(contact: Contact): void {
     sessionStorage.setItem('contact', JSON.stringify(contact));
   }
@@ -43,11 +47,19 @@ export class TradeRequestService {
   saveProducts(products: Product[]): void {
     sessionStorage.setItem('products', JSON.stringify(products));
   }
-
   fetchProducts(): Product[] {
     let savedProducts = sessionStorage.getItem('products');
     return savedProducts != null ?
       JSON.parse(savedProducts) : [];
+  }
+
+  saveRequest(request: any): void {
+    sessionStorage.setItem('request', JSON.stringify(request));
+  }
+  fetchRequest(): any {
+    let savedRequest = sessionStorage.getItem('request');
+    return savedRequest != null ?
+      JSON.parse(savedRequest) : null;
   }
 
   submitRequest(): Observable<TradeInRequestDTO> | null {

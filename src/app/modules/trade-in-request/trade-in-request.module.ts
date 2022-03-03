@@ -12,6 +12,7 @@ import { ImageFormComponent } from './components/image-form/image-form.component
 import { ProductElementComponent } from './components/product-element/product-element.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { SuccessPageComponent } from './components/success-page/success-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     ProductFormComponent,
     ProductPageComponent,
     HomePageComponent,
-    ImageFormComponent
+    ImageFormComponent,
+    SuccessPageComponent
   ],
   imports: [
     CommonModule,

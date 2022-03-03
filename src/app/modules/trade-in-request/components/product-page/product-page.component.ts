@@ -86,7 +86,9 @@ export class ProductPageComponent implements OnInit {
     this.tradeService.submitRequest()?.subscribe({
       next: (result: any) => {
         console.log(result);
-        this.router.navigate(['/trade-in-request/success', result.id]);
+        this.tradeService.saveRequest(result);
+        this.router.navigate(['/trade-in-request/success']);
+        this.tradeService.resetProducts();
       },
       error: err => console.log(err)
     });
