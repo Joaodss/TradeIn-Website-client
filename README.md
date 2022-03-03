@@ -15,4 +15,4 @@
 
 - Run the following command to instal the dependencies: `npm instal`
 
-- Run the following command to start the program at [http://localhost:4200/](http://localhost:4200/): `npm start`
+- Run the command: `npm start` to start the program at [http://localhost:4200/](http://localhost:4200/)
