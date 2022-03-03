@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TradeInRequestModule } from './modules/trade-in-request/trade-in-request.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { TradeInRequestModule } from './modules/trade-in-request/trade-in-request.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { TradeInRequestModule } from './modules/trade-in-request/trade-in-reques
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    TradeInRequestModule
+    TradeInRequestModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

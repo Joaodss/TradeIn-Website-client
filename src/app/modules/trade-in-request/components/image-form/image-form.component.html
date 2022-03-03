@@ -1,0 +1,18 @@
+
+  <div class="row w-100 image-title mt-2">
+    {{photoName}}
+  </div>
+
+  <div class="row w-100 image-path">
+    <img class="product-image img-thumbnail img-responsive" [src]="url"
+      [alt]="url">
+  </div>
+
+  <div class="row w-100 image-file">
+    <button type="button" class="btn btn-default btn-sm w-auto" (click)="fileInput.click()">
+      Add photo
+    </button>
+    <input style="display: none" type="file" accept="image/*"
+      (change)="processFile(fileInput)" #fileInput>
+  </div>
+

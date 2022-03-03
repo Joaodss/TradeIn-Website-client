@@ -1,0 +1,18 @@
+legend{
+  margin-top: 1em;
+  font-size: 1.1em;
+}
+
+.form-control-feedback{
+  padding-left: 0;
+}
+
+.btn-submit{
+  background-color: #444;
+  border-color: #444;
+}
+
+.btn-submit:hover{
+  background-color: #000;
+  border-color: #000;
+}

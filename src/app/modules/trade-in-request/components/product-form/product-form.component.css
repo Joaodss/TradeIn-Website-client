@@ -1,0 +1,9 @@
+legend{
+  margin-top: 1.2em;
+  font-size: 1.2em;
+}
+
+.form-control-feedback{
+  padding-left: 0;
+  margin-top: 0.2em;
+}

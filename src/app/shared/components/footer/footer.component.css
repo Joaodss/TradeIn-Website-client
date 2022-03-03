@@ -1,14 +1,15 @@
 .footer {
   line-height: 20px;
+  background-color: #000;
 }
 
 .footer .copyright {
   display: flex;
-  color: #777777;
+  color: #eee;
   padding: 10px 15px;
   font-size: 14px;
   margin: 15px 3px;
   line-height: 20px;
   text-align: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
