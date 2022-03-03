@@ -10,6 +10,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { ProductElementComponent } from './components/product-element/product-element.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { ImageFormComponent } from './components/image-form/image-form.component';
 
 
 
@@ -21,7 +22,8 @@ import { ProductPageComponent } from './components/product-page/product-page.com
     ProductElementComponent,
     ProductFormComponent,
     ProductPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    ImageFormComponent
   ],
   imports: [
     CommonModule,

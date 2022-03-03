@@ -11,5 +11,5 @@
   margin: 15px 3px;
   line-height: 20px;
   text-align: center;
-  justify-content: end;
+  justify-content: flex-end;
 }

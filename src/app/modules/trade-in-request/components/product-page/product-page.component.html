@@ -27,7 +27,12 @@
     </div>
   </div>
 
-  <app-product-form (emitAddProduct)="addProduct($event)"></app-product-form>
+  <app-product-form [id]="selectedProductId"
+    [product]="passSelectedProduct()"
+    [hasShippingCountryFixed]="hasFixedCountry()"
+    [firstShippingCountryISOCode]="getFixedCountry()"
+    (emitAddProduct)="addProduct($event)"
+    (emitUpdateProduct)="updateProduct($event)"></app-product-form>
 
 
 
