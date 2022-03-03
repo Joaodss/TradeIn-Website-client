@@ -82,7 +82,7 @@ export class ProductFormComponent implements OnInit {
     this.bagSize = new FormControl(this.product.bagDTO.size, [CustomValidator.requiredForBagCategory]);
     this.bagExtras = new FormControl(this.product.bagDTO.extras, [CustomValidator.requiredForBagCategory]);
     this.shoesSize = new FormControl(this.product.shoesDTO.size, [CustomValidator.requiredForShoes]);
-    this.photos = new FormControl(this.product.photos ? this.product.photos : new Array<Photo>(), []);
+    this.photos = new FormControl(this.product.photos ? this.product.photos : new Array<Photo>(), [Validators.required]);
     this.blemishPhotos = new FormControl(this.product.blemishPhotos ? this.product.blemishPhotos : new Array<Photo>(), []);
     this.productForm = new FormGroup({
       shippingCountryISOCode: this.shippingCountryISOCode,
@@ -154,8 +154,11 @@ export class ProductFormComponent implements OnInit {
   }
 
   addPhoto(photo: Photo) {
-    this.photos.setValue(this.photos.value.push(photo));
-    this.product.photos = this.photos.value;
+    this.photos.setValue(
+      this.getPhotos()
+        .filter((p: Photo) => p.tag !== photo.tag)
+        .concat(photo)
+    );
   }
 
   removePhoto(photo: Photo) {
@@ -168,6 +171,17 @@ export class ProductFormComponent implements OnInit {
         .filter((p: Photo) => p.tag !== photo.tag)
         .concat(photo)
     );
+  }
+
+  getPhotos(): Photo[] {
+    if (!this.photos.value) this.photos.setValue([]);
+    return this.photos.value;
+  }
+
+  getPhotoByTag(tag: string): Photo {
+    const photo = this.getPhotos().find((p: Photo) => p.tag === tag)
+    if (!photo) return this.getEmptyPhoto();
+    return photo;
   }
 
   getBlemishPhotos(): Photo[] {
