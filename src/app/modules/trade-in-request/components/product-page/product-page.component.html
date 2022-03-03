@@ -1,9 +1,34 @@
 <div class="container">
+
   <div class="row justify-content-center my-4 mx-0">
     <div class="col-auto justify-content-center">
       <h4 class="my-3">Add products to your request</h4>
     </div>
   </div>
+
   <app-contact-info></app-contact-info>
+
+  <div class="row justify-content-center mx-0">
+    <div class="col-8 col-md-6 justify-content-center blockquote">
+    </div>
+  </div>
+
+  <div class="row justify-content-center mx-0">
+    <div class="">
+      <app-product-element [product]="product" [tempId]="i"
+        *ngFor="let product of products; let i=index"></app-product-element>
+    </div>
+  </div>
+
+
+
+  <div class="row justify-content-center mx-0">
+    <div class="col-8 col-md-6 justify-content-center blockquote">
+    </div>
+  </div>
+
+  <app-product-form (emitAddProduct)="addProduct($event)"></app-product-form>
+
+
 
 </div>
